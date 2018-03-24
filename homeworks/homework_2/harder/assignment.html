@@ -1,0 +1,516 @@
+<!--?xml version="1.0" encoding="utf-8" ?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml-transitional.dtd">
+<html><head>
+  <title>holoumar@progtest.fit.cvut.cz - ProgTest</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="assignment_files/css.css" rel="stylesheet" type="text/css">
+  <script src="assignment_files/shared.js" language="JavaScript" type="text/javascript"></script>
+  
+ </head>
+ <body text="#000000" bgcolor="#828273">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+   <tbody><tr height="25">
+    <td bgcolor="#00ff00" align="left"><span class="navLink"><a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Main">ProgTest</a>&nbsp;&nbsp;►&nbsp;&nbsp;<a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Course&amp;Cou=103">BI-PA2 (13/14 LS)</a>&nbsp;&nbsp;►&nbsp;&nbsp;<a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskGrp&amp;Cou=103&amp;Tgr=648">Domácí úloha 02</a>&nbsp;&nbsp;►&nbsp;&nbsp;<b>Daňový registr II</b></span></td>
+    <td bgcolor="#00ff00" align="right"><a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Logout">Logout</a></td>
+   </tr>
+  </tbody></table>
+<br>
+
+
+
+
+ <br>
+ <br>
+   <center>
+   <div class="topLayout">
+    <div class="outBox">
+     <table class="header" width="100%" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+       <td class="header"><b>Daňový registr II</b></td>
+      </tr>
+     </tbody></table>
+    </div>
+   </div>
+  </center>
+ <form name="form1" method="post" action="?X=TaskU&amp;Cou=103&amp;Tgr=648&amp;Tsk=1056" enctype="multipart/form-data">
+  <center>
+    <div class="topLayout">
+     <div class="outBox">
+      <table id="maintable" width="100%" cellspacing="0" cellpadding="2" border="0">
+       <colgroup><col width="200">
+       <col>
+       <col width="130">
+
+       </colgroup><tbody><tr>
+        <td class="ltCell" align="left"><b>Termín odevzdání:</b></td>
+        <td class="tCell" align="left"><b>30.03.2014 23:59:59</b></td>
+        <td class="rtCell" id="countdown" align="right">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td class="lCell" align="left"><b>Hodnocení:</b></td>
+        <td class="rCell" colspan="2" align="left"><b>5.5000</b></td>
+       </tr>
+       <tr>
+        <td class="lCell" align="left"><b>Max. hodnocení:</b></td>
+        <td class="rCell" colspan="2" align="left"><b>5.0000</b> (bez bonusů)</td>
+       </tr>
+       <tr>
+        <td class="lCell" align="left"><b>Odevzdaná řešení:</b></td>
+        <td class="rCell" colspan="2" align="left">1 /  20 Volné pokusy + 20 Penalizované pokusy (-2 % penalizace za každé odevzdání)</td>
+       </tr>
+
+       <tr>
+        <td class="lbCell" align="left"><b>Nápovědy:</b></td>
+        <td class="rbCell" colspan="2" align="left">0 / 2 Volné nápovědy + 2 Penalizované nápovědy (-10 % penalizace za každou nápovědu)</td>
+       </tr>
+
+       <tr>
+        <td class="lrtbCell" colspan="3" align="left"><p>Úkolem je realizovat třídu <tt>CTaxRegister</tt>, která bude implementovat
+databázi příjmů a výdajů obyvatelstva.</p>
+
+<p>Toto zadání je rozšířením jednodušší úlohy "Daňový registr I". Doporučujeme 
+nejprve realizovat řešení jednodušší, otestovat jej, odevzdat jej a pak jej 
+rozšířit podle tohoto zadání. Rozšíření spočívá v možnosti identifikovat občana 
+v databázi nejen pomocí jména a adresy, ale i pomocí jednoznačného určeného ID účtu.</p>
+
+<p>Pro plánované důslednější potírání daňových úniků je potřeba vybudovat 
+databázi všech obyvatel, ve které budou archivované jejích příjmy a výdaje. 
+Předpokládáme, že v databázi je zaveden každý občan v okamžiku jeho narození. 
+Od té doby se mu počítají všechny příjmy a všechny výdaje. Záznam je z databáze 
+odstraněn v okamžiku jeho úmrtí. Občan je identifikován svým jménem, adresou a
+číslem účtu. Číslo účtu je unikátní přes celou databázi. Jména a adresy se mohou 
+opakovat, ale dvojice (jméno, adresa) je opět v databázi unikátní. Tedy v databázi 
+může být mnoho jmen <tt>Jan Novak</tt>, mnoho lidí může mít adresu <tt>Hlavni 60</tt>,
+ale <tt>Jan Novak</tt> bydlící na adrese <tt>Hlavni 60</tt> může být v databázi 
+pouze jeden.</p>  
+
+
+<p>Veřejné rozhraní je uvedeno níže. Obsahuje následující:</p>
+<ul>
+ <li>Konstruktor bez parametrů. Tento konstruktor inicializuje instanci třídy 
+  tak, že vzniklá instance je zatím prázdná (neobsahuje žádné záznamy).</li>
+ <li>Destruktor. Uvolňuje prostředky, které instance alokovala.</li>
+ <li>Metoda <tt>Birth(Name, Addr, Acct)</tt> přidá do existující
+  databáze další záznam. Parametry <tt>Name</tt> a <tt>Addr</tt> reprezentují 
+  jméno a adresu občana, parametr <tt>Acct</tt> udává číslo účtu.  Metoda 
+  vrací hodnotu <tt>true</tt>, pokud byl  záznam přidán, nebo hodnotu <tt>false</tt>, 
+  pokud přidán nebyl (protože již  v databázi existoval záznam se stejným jménem a adresou, 
+  nebo záznam se stejným číslem účtu).</li>
+ <li>Metoda <tt>Death (Name, Addr)</tt> odstraní záznam z databáze. Parametrem je jednoznačná 
+  identifikace pomocí jména a adresy. Pokud byl záznam skutečně odstraněn, 
+  vrátí metoda hodnotu <tt>true</tt>. Pokud záznam neodstraní (protože neexistoval občan 
+  s touto identifikací), vrátí metoda hodnotu <tt>false</tt>.</li>
+ <li>Metody <tt>Income</tt> zaznamenají na účet pro daného občana příjem 
+  ve výši <tt>Amount</tt>. Varianty jsou dvě - občan je buď identifikován svým jménem a adresou, 
+  nebo identifikátorem jeho účtu. Pokud metoda uspěje, vrací <tt>true</tt>, pro neúspěch vrací 
+  <tt>false</tt> (neexistující občan/účet).</li>
+
+ <li>Metody <tt>Expense</tt> zaznamenají na účet daného občana výdaj ve výši <tt>Amount</tt>. 
+  Varianty jsou dvě - občan je buď identifikován svým jménem a adresou, nebo identifikátorem 
+  jeho účtu. Pokud metoda uspěje, vrací <tt>true</tt>, pro neúspěch vrací <tt>false</tt> 
+  (neexistující občan/účet).</li>
+
+ <li>Metoda <tt>Audit ( Name, Addr, Acct, SumIncome, SumExpense )</tt> vyhledá pro občana se zadaným 
+  jménem a adresou a všechny dostupné informace (účet, součet příjmů a součet výdajů). Nalezené
+  informace uloží do zadaných výstupních parametrů. Metoda vrátí <tt>true</tt> pro úspěch, 
+  <tt>false</tt> pro selhání (neexistující číslo účtu).</li>
+</ul>
+
+<p>Odevzdávejte soubor, který obsahuje implementovanou třídu
+<tt>CTaxRegister</tt>. Třída musí splňovat veřejné rozhraní podle ukázky - pokud Vámi 
+odevzdané řešení nebude obsahovat popsané rozhraní, dojde k chybě při kompilaci. Do třídy 
+si ale můžete doplnit další metody (veřejné nebo i privátní) a členské proměnné. 
+Odevzdávaný soubor musí obsahovat jak deklaraci třídy (popis rozhraní) tak i definice 
+metod, konstruktoru a destruktoru. Je jedno, zda jsou metody implementované inline 
+nebo odděleně. Odevzdávaný soubor nesmí kromě implementace třídy
+<tt>CTaxRegister</tt> obsahovat nic jiného, zejména ne vkládání hlavičkových souborů a 
+funkci <tt>main</tt> (funkce <tt>main</tt> a vkládání hlavičkových souborů může zůstat, 
+ale pouze obalené direktivami podmíněného překladu jako v ukázce níže).</p>
+
+<p>Třída je testovaná v omezeném prostředí, kde je limitovaná dostupná paměť (dostačuje 
+k uložení seznamu) a je omezena dobou běhu. Implementovaná třída se nemusí zabývat 
+kopírujícím konstruktorem ani přetěžováním operátoru =. V této úloze ProgTest neprovádí 
+testy této funkčnosti.</p>
+
+<p>Implementace třídy musí být efektivní z hlediska nároků na čas i nároků na paměť. 
+Jednoduché lineární řešení nestačí (pro testovací data vyžaduje čas přes 5 minut). 
+Předpokládejte, že narození a úmrtí jsou řádově méně časté než ostatní operace. 
+Proto vyhovuje řešení s polem seřazených hodnot, kde vyhledávání probíhá půlením
+intervalu s logaritmickou složitostí. Méně časté operace vkládání a výmaz je pak 
+doporučeno implementovat postupem, který v logaritmickém čase najde pozici 
+vkládaného/odebíraného prvku a pak v lineárním čase posune obsah pole.</p>
+
+<p>Pro uložení hodnot alokujte pole dynamicky případně použijte STL. Pozor 
+Pokud budete pole alokovat ve vlastní režii, zvolte počáteční velikost malou 
+(např. tisíc prvků) a velikost zvětšujte/zmenšujte podle potřeby. Při zaplnění 
+pole není vhodné alokovat nové pole větší pouze o jednu hodnotu, takový postup 
+má obrovskou režii na kopírování obsahu. Je rozumné pole rozšiřovat s krokem 
+řádově tisíců prvků, nebo geometrickou řadou s kvocientem ~1.5 až 2.</p>
+
+<p>Pokud budete používat STL, nemusíte se starat o problémy s alokací. Pozor -
+v STL máte zakázané kontejnery <tt>map</tt>.</p>
+
+<p>Požadované veřejné rozhraní třídy:</p>
+
+<pre>#ifndef __PROGTEST__
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cmath&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#endif /* __PROGTEST__ */
+
+
+class CTaxRegister
+ {
+   public:
+         CTaxRegister ( void );
+        ~CTaxRegister ( void );
+    bool Birth        ( const string    &amp; name,
+                        const string    &amp; addr,
+                        const string    &amp; account );
+    bool Death        ( const string    &amp; name,
+                        const string    &amp; addr );
+    bool Income       ( const string    &amp; account,
+                        int               amount );
+    bool Income       ( const string    &amp; name,
+                        const string    &amp; addr,
+                        int               amount );
+    bool Expense      ( const string    &amp; acount,
+                        int               amount );
+    bool Expense      ( const string    &amp; name,
+                        const string    &amp; addr,
+                        int               amount );
+    bool Audit        ( const string    &amp; name,
+                        const string    &amp; addr,
+                        string          &amp; account,
+                        int             &amp; sumIncome,
+                        int             &amp; sumExpense ) const;
+    // todo 
+ };
+</pre>
+
+<p>Ukázka použití třídy:</p>
+
+<pre>bool   status;
+string acct;
+int    sumIncome, sumExpense;
+
+CTaxRegister b1;
+status = b1 . Birth ( "John Smith", "Oak Road 23", "123/456/789" );
+// status = true
+status = b1 . Birth ( "Jane Hacker", "Main Street 17", "Xuj5#94" );
+// status = true
+status = b1 . Birth ( "Peter Hacker", "Main Street 17", "634oddT" );
+// status = true
+status = b1 . Birth ( "John Smith", "Main Street 17", "Z343rwZ" );
+// status = true
+status = b1 . Income ( "Xuj5#94", 1000 );
+// status = true
+status = b1 . Income ( "634oddT", 2000 );
+// status = true
+status = b1 . Income ( "123/456/789", 3000 );
+// status = true
+status = b1 . Income ( "634oddT", 4000 );
+// status = true
+status = b1 . Income ( "Peter Hacker", "Main Street 17", 2000 );
+// status = true
+status = b1 . Expense ( "Jane Hacker", "Main Street 17", 2000 );
+// status = true
+status = b1 . Expense ( "John Smith", "Main Street 17", 500 );
+// status = true
+status = b1 . Expense ( "Jane Hacker", "Main Street 17", 1000 );
+// status = true
+status = b1 . Expense ( "Xuj5#94", 1300 );
+// status = true
+status = b1 . Audit ( "John Smith", "Oak Road 23", acct, sumIncome, sumExpense );
+// status = true, acct = "123/456/789", sumIncome=3000, sumExpense=0
+status = b1 . Audit ( "Jane Hacker", "Main Street 17", acct, sumIncome, sumExpense );
+// status = true, acct = "Xuj5#94", sumIncome=1000, sumExpense=4300
+status = b1 . Audit ( "Peter Hacker", "Main Street 17", acct, sumIncome, sumExpense );
+// status = true, acct = "634oddT", sumIncome=8000, sumExpense=0
+status = b1 . Audit ( "John Smith", "Main Street 17", acct, sumIncome, sumExpense );
+// status = true, acct = "Z343rwZ", sumIncome=0, sumExpense=500
+status = b1 . Death ( "John Smith", "Main Street 17" );
+// status = true
+
+CTaxRegister b2;
+status = b2 . Birth ( "John Smith", "Oak Road 23", "123/456/789" );
+// status = true
+status = b2 . Birth ( "Jane Hacker", "Main Street 17", "Xuj5#94" );
+// status = true
+status = b2 . Income ( "634oddT", 4000 );
+// status = false
+status = b2 . Expense ( "John Smith", "Main Street 18", 500 );
+// status = false
+status = b2 . Audit ( "John Nowak", "Second Street 23", acct, sumIncome, sumExpense );
+// status = false
+status = b2 . Death ( "Peter Nowak", "5-th Avenue" );
+// status = false
+status = b2 . Birth ( "Jane Hacker", "Main Street 17", "4et689A" );
+// status = false
+status = b2 . Birth ( "Joe Hacker", "Elm Street 23", "Xuj5#94" );
+// status = false
+status = b2 . Death ( "Jane Hacker", "Main Street 17" );
+// status = true
+status = b2 . Birth ( "Joe Hacker", "Elm Street 23", "Xuj5#94" );
+// status = true
+status = b2 . Audit ( "Joe Hacker", "Elm Street 23", acct, sumIncome, sumExpense );
+// status = true, acct = "Xuj5#94", sumIncome=0, sumExpense=0
+status = b2 . Birth ( "Joe Hacker", "Elm Street 23", "AAj5#94" );
+// status = false
+</pre>
+</td>
+       </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+      </tbody></table>
+     </div>
+    </div>
+
+
+ <br>
+ <div class="topLayout">
+  <div class="outBox">
+   <table id="reftable" width="100%" cellspacing="0" cellpadding="2" border="0">
+   <tbody><tr>
+    <td class="ltbSepCell" align="left"><input name="SHOW_REF" onchange="showRefSolution()" type="checkbox">&nbsp;<b>Referenční řešení</b></td>
+    <td class="rtbSepCell" align="right">&nbsp;</td>
+   </tr>
+   <tr style="display: none;">
+    <td class="lrtbCell" colspan="2" align="left"><ul><li><b>Hodnotitel: automat</b><ul><li>Program zkompilován</li><li>Test 'Zakladni test s parametry podle ukazky': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.000 s (limit: 8.000 s)</li><li>Využití paměti: 12764 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test meznich hodnot': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.033 s (limit: 8.000 s)</li><li>Využití paměti: 13424 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi vstupy (Add, Search)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.015 s (limit: 7.967 s)</li><li>Využití paměti: 13424 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi vstupy (Add, Del, Search)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.014 s (limit: 7.952 s)</li><li>Využití paměti: 13424 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (nahodne hodnoty)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 1.454 s (limit: 7.938 s)</li><li>Využití paměti: 16992 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi hodnotami + test prace s pameti': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 25.00 %</li><li>Celková doba běhu: 3.376 s (limit: 8.000 s)</li><li>Využití paměti: 22316 KiB (limit: 31319 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (nahodna jmena, fixni adresa)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 75.00 %</li><li>Celková doba běhu: 0.886 s (limit: 10.000 s)</li><li>Využití paměti: 16968 KiB (limit: 23126 KiB)</li><li>Úspěch v nepovinném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (fixni jmena, nahodna adresa)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 75.00 %</li><li>Celková doba běhu: 0.950 s (limit: 9.114 s)</li><li>Využití paměti: 16972 KiB (limit: 23126 KiB)</li><li>Úspěch v nepovinném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Všechny paměťové bloky byly uvolněné - ok.</li><li>Celkové hodnocení: 100.00 % (= 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.00)</li></ul></li><li>Celkové procentní hodnocení: 100.00 %</li><li>Bonus za včasné odevzdání: 0.50</li><li>Celkem bodů: 1.00 * ( 5.00 + 0.50 ) = 5.50</li></ul></td>
+   </tr>
+    <tr style="display: none;">
+  <td class="ltbCell" align="left"><b>SW metriky:</b></td>
+  <td class="rtbCell" colspan="2" align="left">
+   <table cellpadding="2" border="0">
+    <tbody><tr>
+     <td>&nbsp;</td>
+     <td class="ac">Celkem</td>
+     <td class="ac">Průměr</td>
+     <td class="ac">Maximum</td>
+     <td>Jméno funkce</td>
+    </tr>
+    <tr>
+     <td>Funkce:</td>
+     <td class="ar"><b>16</b></td>
+     <td class="ar">--</td>
+     <td class="ar">--</td>
+     <td>--</td>
+    </tr>
+    <tr>
+     <td>Řádek kódu:</td>
+     <td class="ar"><b>174</b></td>
+     <td class="ar"><span class="textOk">10.88 ± 5.63</span></td>
+     <td class="ar"><span class="textOk">27</span></td>
+     <td><tt>Birth(const string &amp;,const string &amp;,const string &amp;)</tt></td>
+    </tr>
+    <tr>
+     <td>Cyklomatická složitost:</td>
+     <td class="ar"><b>54</b></td>
+     <td class="ar"><span class="textOk">3.38 ± 2.39</span></td>
+     <td class="ar"><span class="textOk">8</span></td>
+     <td><tt>Birth(const string &amp;,const string &amp;,const string &amp;)</tt></td>
+    </tr>
+   </tbody></table>
+  </td>
+ </tr>
+   </tbody></table>
+  </div>
+ </div>
+
+
+
+
+ <br>
+ <div class="topLayout">
+  <div class="outBox">
+   <table id="maintable" width="100%" cellspacing="0" cellpadding="2" border="0">
+    <colgroup><col width="200">
+    <col>
+    <col width="130">
+
+   </colgroup><tbody><tr>
+    <td class="ltbOkSepCell" align="left"><b>1</b></td>
+    <td class="tbOkSepCell" align="left"><b>16.03.2014 02:53:28</b></td>
+    <td class="rtbOkSepCell" align="center"><div class="but1 w120"><div class="but2"><a class="butLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskD&amp;Cou=103&amp;Tgr=648&amp;Tsk=1056&amp;Sub=426250">Download</a></div></div></td>
+   </tr>
+   <tr>
+    <td class="ltCell" align="left"><b>Stav odevzdání:</b></td>
+    <td class="tCell" align="left">Ohodnoceno</td>
+
+
+
+    <td class="rtbCell" rowspan="2">&nbsp;</td>
+
+
+   </tr>
+
+   <tr>
+    <td class="lbCell" align="left"><b>Hodnocení:</b></td>
+    <td class="bCell" align="left">5.5000</td>
+   </tr>   <tr>
+    <td class="lrtbCell" colspan="3" align="left"><ul><li><b>Hodnotitel: automat</b><ul><li>Program zkompilován</li><li>Test 'Zakladni test s parametry podle ukazky': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.000 s (limit: 8.000 s)</li><li>Využití paměti: 12764 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test meznich hodnot': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.035 s (limit: 8.000 s)</li><li>Využití paměti: 13424 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi vstupy (Add, Search)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.016 s (limit: 7.965 s)</li><li>Využití paměti: 13424 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi vstupy (Add, Del, Search)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.016 s (limit: 7.949 s)</li><li>Využití paměti: 13424 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (nahodne hodnoty)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 1.655 s (limit: 7.933 s)</li><li>Využití paměti: 16988 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi hodnotami + test prace s pameti': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 25.00 %</li><li>Celková doba běhu: 2.886 s (limit: 8.000 s)</li><li>Využití paměti: 22028 KiB (limit: 31319 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (nahodna jmena, fixni adresa)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 75.00 %</li><li>Celková doba běhu: 1.015 s (limit: 10.000 s)</li><li>Využití paměti: 16968 KiB (limit: 23126 KiB)</li><li>Úspěch v nepovinném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (fixni jmena, nahodna adresa)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 75.00 %</li><li>Celková doba běhu: 1.055 s (limit: 8.985 s)</li><li>Využití paměti: 16972 KiB (limit: 23126 KiB)</li><li>Úspěch v nepovinném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Všechny paměťové bloky byly uvolněné - ok.</li><li>Celkové hodnocení: 100.00 % (= 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.00)</li></ul></li><li>Celkové procentní hodnocení: 100.00 %</li><li>Bonus za včasné odevzdání: 0.50</li><li>Celkem bodů: 1.00 * ( 5.00 + 0.50 ) = 5.50</li></ul></td>
+   </tr> <tr>
+  <td class="ltbCell" align="left"><b>SW metriky:</b></td>
+  <td class="rtbCell" colspan="2" align="left">
+   <table cellpadding="2" border="0">
+    <tbody><tr>
+     <td>&nbsp;</td>
+     <td class="ac">Celkem</td>
+     <td class="ac">Průměr</td>
+     <td class="ac">Maximum</td>
+     <td>Jméno funkce</td>
+    </tr>
+    <tr>
+     <td>Funkce:</td>
+     <td class="ar"><b>20</b></td>
+     <td class="ar">--</td>
+     <td class="ar">--</td>
+     <td>--</td>
+    </tr>
+    <tr>
+     <td>Řádek kódu:</td>
+     <td class="ar"><b>250</b></td>
+     <td class="ar"><span class="textOk">12.50 ± 13.46</span></td>
+     <td class="ar"><span class="textOk">42</span></td>
+     <td><tt>Birth(const string &amp;,const string &amp;,const string &amp;)</tt></td>
+    </tr>
+    <tr>
+     <td>Cyklomatická složitost:</td>
+     <td class="ar"><b>62</b></td>
+     <td class="ar"><span class="textOk">3.10 ± 3.42</span></td>
+     <td class="ar"><span class="textOk">12</span></td>
+     <td><tt>Birth(const string &amp;,const string &amp;,const string &amp;)</tt></td>
+    </tr>
+   </tbody></table>
+  </td>
+ </tr>   </tbody></table>
+  </div>
+ </div> <br>
+  
+ 
+  </center>
+ </form>
+
+
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+<!--
+
+var deadLine = new Date ( 1396216799 * 1000 );
+
+function CBpressed ( num )
+ {
+   var pre, cb;
+
+   cb = MM_findObj ( "cb_" + num );
+   pre = MM_findObj ( "pre_" + num );
+   if ( cb != null && pre != null )
+    {
+      pre . style . display = cb . checked ? "block" : "none";
+    }
+ }
+
+function unlockAdvice ( url )
+ {
+   if ( confirm ( 'Máte k dispozici pouze omezený počet nápověd. Navíc, použití nápovědy může snížit bodové hodnocení. Opravdu chcete zpřístupnit tuto nápovědu?' ) )
+    this . location = url;
+ }
+
+function setCountdown ( )
+ {
+   var d = new Date ();
+   var x = ( deadLine . getTime () - d . getTime () );
+   var tgt = document . getElementById ( "countdown" );
+
+   if ( x > 0 )
+    {
+      var s = Math . floor ( x / 1000 );
+      var ms = (x % 1000) + "";
+
+      while ( ms . length  < 3 ) ms = "0" + ms;
+
+      tgt . innerHTML = s + "." + ms + " sec";
+
+      window . setTimeout ( setCountdown, 117 );
+    }
+   else
+    {
+      tgt . innerHTML = '&nbsp;';
+    }
+ }
+
+function showRefSolution ( )
+ {
+   var t = document . getElementById ( "reftable" );
+   var x = document . getElementsByName ( "SHOW_REF" )[0];
+
+   if ( ! x ) return;
+   var r1 = t . rows[1], r2 = t . rows[2];
+
+   if ( x . checked )
+    {
+      r1 . style . display = "";
+      if ( r2 ) r2 . style . display = "";
+    }
+   else
+    {
+      r1 . style . display = "none";
+      if ( r2 ) r2 . style . display = "none";
+    }
+ }
+
+
+setCountdown ();
+showRefSolution ();
+
+// -->
+</script>
+
+
+
+
+
+ 
+
+
+</body></html>
+<!-- Template run time: 0.040515899658203 sec -->

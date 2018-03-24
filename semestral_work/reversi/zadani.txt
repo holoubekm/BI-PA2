@@ -1,0 +1,3 @@
+Reversi s umělou inteligencí.
+
+Rozhraní naprogramujte pomocí ncurses. Zkuste vytvořit nějakou jednoduchou formu "umělé inteligence" tak, aby si uživatel mohl zahrát proti počítači. Program musí umožňovat hru dvou hráčů po síti. Program podporuje alespoň dva různé algoritmy umělé inteligence. Jeden z těchto algoritmů je minimax: http://en.wikipedia.org/wiki/Minimax Program umožňuje hraní dvou umělých inteligencí proti sobě. Tento text má rámcově vymezit téma semestrální práce. Podrobnější podmínky viz. Edux.

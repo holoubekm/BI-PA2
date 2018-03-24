@@ -1,0 +1,517 @@
+<!--?xml version="1.0" encoding="utf-8" ?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml-transitional.dtd">
+<html><head>
+  <title>holoumar@progtest.fit.cvut.cz - ProgTest</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="assignment_files/css.css" rel="stylesheet" type="text/css">
+  <script src="assignment_files/shared.js" language="JavaScript" type="text/javascript"></script>
+  
+ </head>
+ <body text="#000000" bgcolor="#828273">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+   <tbody><tr height="25">
+    <td bgcolor="#00ff00" align="left"><span class="navLink"><a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Main">ProgTest</a>&nbsp;&nbsp;►&nbsp;&nbsp;<a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Course&amp;Cou=103">BI-PA2 (13/14 LS)</a>&nbsp;&nbsp;►&nbsp;&nbsp;<a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskGrp&amp;Cou=103&amp;Tgr=647">Domácí úloha 01</a>&nbsp;&nbsp;►&nbsp;&nbsp;<b>Huffmanův kód</b></span></td>
+    <td bgcolor="#00ff00" align="right"><a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Logout">Logout</a></td>
+   </tr>
+  </tbody></table>
+<br>
+
+
+
+
+ <br>
+ <br>
+   <center>
+   <div class="topLayout">
+    <div class="outBox">
+     <table class="header" width="100%" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+       <td class="header"><b>Huffmanův kód</b></td>
+      </tr>
+     </tbody></table>
+    </div>
+   </div>
+  </center>
+ <form name="form1" method="post" action="?X=TaskU&amp;Cou=103&amp;Tgr=647&amp;Tsk=1049" enctype="multipart/form-data">
+  <center>
+    <div class="topLayout">
+     <div class="outBox">
+      <table id="maintable" width="100%" cellspacing="0" cellpadding="2" border="0">
+       <colgroup><col width="200">
+       <col>
+       <col width="130">
+
+       </colgroup><tbody><tr>
+        <td class="ltCell" align="left"><b>Termín odevzdání:</b></td>
+        <td class="tCell" align="left"><b>23.03.2014 23:59:59</b></td>
+        <td class="rtCell" id="countdown" align="right">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td class="lCell" align="left"><b>Hodnocení:</b></td>
+        <td class="rCell" colspan="2" align="left"><b>7.4250</b></td>
+       </tr>
+       <tr>
+        <td class="lCell" align="left"><b>Max. hodnocení:</b></td>
+        <td class="rCell" colspan="2" align="left"><b>5.0000</b> (bez bonusů)</td>
+       </tr>
+       <tr>
+        <td class="lCell" align="left"><b>Odevzdaná řešení:</b></td>
+        <td class="rCell" colspan="2" align="left">1 /  20 Volné pokusy + 20 Penalizované pokusy (-2 % penalizace za každé odevzdání)</td>
+       </tr>
+
+       <tr>
+        <td class="lbCell" align="left"><b>Nápovědy:</b></td>
+        <td class="rbCell" colspan="2" align="left">0 / 2 Volné nápovědy + 2 Penalizované nápovědy (-10 % penalizace za každou nápovědu)</td>
+       </tr>
+
+       <tr>
+        <td class="lrtbCell" colspan="3" align="left"><p>Úkolem je vytvořit sadu C/C++ funkcí, které dokáží dekomprimovat a komprimovat 
+vstupní soubor Huffmanovým kódem. Vzhledem k většímu rozsahu úlohy je potřeba 
+zvládnout pouze část dekomprese, komprimace je nepovinná za bonusové body.</p>
+
+<p>Huffmanův kód je princip komprese dat, který využívá statistických vlastností ukládaných dat. 
+V typických souborech jsou různé hodnoty (např. znaky) zastoupeny s velmi nerovnoměrnou 
+četností. Například mezery jsou v typickém textu velmi časté, naopak znak ř bude málo 
+frekventovaný. Huffmanův kód zpracuje analýzu četnosti výskytu jednotlivých znaků a podle 
+četností přidělí jednotlivým znakům kódy. Kódy mají různou délku, typicky 1 až desítky bitů. 
+Často se vyskytující znaky dostanou kódy kratší, málo časté znaky dostanou kódy delší. 
+To v důsledku vede k úspoře místa.</p>
+
+<p>Zavedením různé délky kódů pro jednotlivé znaky se ale objeví jiný problém. Musíme být 
+schopni detekovat, kde kódovaný znak končí, tedy kolik bitů je potřeba načíst, abychom  
+znak správně dekódovali právě jeden znak. Pro fixní počet bitů na znak je to snadné. Např. 
+ASCII má 8 bitů/znak, tedy co bajt, to znak. UTF-8 je složitější, jeden znak zabírá 1 až 4 
+bajty a je potřeba kontrolovat strukturu čtených bajtů, aby kód čtoucí UTF-8 bajty správně 
+seskupil. U Huffmanova kódu je to ještě obtížnější. Huffmanův kód je kódem prefixovým, tedy žádný 
+kód není prefixem jiného kódu. Pokud například mezeru kódujeme dvojicí bitů 00, pak posloupnosti 
+001, 000, 0001, ... nejsou obsazené žádným jiným kódem. Tím je garantována jednoznačnost 
+dekódování.</p>
+
+<p>Druhým problémem je doplnění na celé bajty a správná detekce posledního znaku při 
+dekódování. Protože kódy mohou mít různé délky, nemusí být počet bitů po komprimaci násobkem 8. 
+Tedy v posledním bajtu mohou být některé bity nevyužité. V souborech ale musíme pracovat 
+s celými bajty, tedy zbývající bity musíme nějakými nulami nebo jedničkami doplnit. Při 
+ukládání to není problém (prostě něco přidáme), ale při načítání bychom takto přidané bity 
+navíc mohli dekódovat jako další znaky navíc. Proto při kódování přidáme na konec souboru 
+zarážku - speciální znak navíc. Tento znak bude mít hodnotu mimo rozsah používaný legálními 
+znaky (např. pro UNICODE by byl 1114112 = 1048576+65536). Pokud na takový kód narazíme při 
+načítání souboru, víme, že tento znak a vše, co následuje, máme ignorovat.</p>
+
+<p>Kódování a dekódování si ukážeme na příkladech:</p>
+
+<pre>vstupní soubor obsahuje 7 znaků (8 bajtů v UTF-8) 
+Kolotoč
+
+Pro tento soubor by Huffmanův kód mohl být například:
+K        100
+o        0
+l        1010
+t        1011
+č        110
+END      111
+
+Tedy po zakódování dostaneme posloupnost bitů:
+K   o l    o t    o č   END 
+100 0 1010 0 1011 0 110 111 
+
+Tato posloupnost bitů seskupena do osmic bitů:
+10001010 01011011 0111xxxx 
+
+Nepoužité bity x vyplněné např. nulami:
+10001010 01011011 01110000 
+
+Tyto bity přepsané v šestnáctkové soustavě jako 3 bajty:
+8a       5b        70
+</pre>
+
+<p>Komprimace zkrátila původních 8 bajtů na 3, tedy na méně než 50%. Aby bylo možné 
+soubor dekomprimovat, je ale potřeba znát, jaký kód byl použit. Dekódovací tabulku 
+lze např. uložit na začátek souboru před vlastní datový obsah. Pro ukládání a dekódování se 
+hodí udržovat tabulku ve formě stromu. Pro ukázkový příklad je strom uveden na obrázku níže.</p>
+
+<center><img src="assignment_files/index.png"></center><br clear="all">
+ 
+<p>Takový strom lze do souboru uložit například průchodem pre-order. 
+Za každý navštívený uzel zapíšeme do souboru jeden bit. Vnitřní uzel 
+zapíšeme bitem 0, list zapíšeme jako bit 1 následovaný hodnotou kódovaného 
+znaku. Budeme uvažovat obecný případ, kde vstupní soubor je kódován v UTF-8, tedy
+kód jednoho znaku je podle pravidel UTF-8 dlouhý 8 až 32 bitů. Kódování všech písmen 
+v ukázce bude 8-bitové, jedině znak č a speciální ukončovací kód END bude kódován více bajty. 
+Znak č má UNICODE kódovou pozici 0x10d a tedy je v UTF-8 kódován dvojicí bajtů: c4 8d. Zarážku END 
+budeme kódovat hodnotou 1114112 (dec) = 110000 (hex), ta by měla v UTF-8 podobu 4 bajtů: f4 90 80 80. 
+(UNICODE je omezen na kódové pozice 0 až 1114111, naše zarážka je o jednu pozici mimo, tedy nekoliduje
+s žádným platným znakem. Lze ji zakódovat pomocí algoritmu UTF-8, ale takový kód pochopitelně 
+nereprezentuje platný znak.) Tedy ukázkový strom bude uložen jako:
+</p><pre>Pre-order průchod stromem:
+0 1 'o' 0 0 1 'K' 0 1 'l' 1 't' 0 1 'č' 1 'END' &lt;bity kódovaného textu&gt;
+
+Náhrada znaků jejich UTF-8 kódy:
+0 1 01101111 0 0 1 01001011 0 1 01101100 1 01110100 0 1 11000100 10001101 
+1 11110100 10010000 10000000 10000000 &lt;bity kódovaného textu&gt;
+
+Seskupení bitů do bajtů:
+01011011 11001010 01011010 11011001 01110100 01110001 00100011
+01111110 10010010 00010000 00010000 000 &lt;bity kódovaného textu&gt;
+
+Pro ukázkový text:
+01011011 11001010 01011010 11011001 01110100 01110001 00100011
+01111110 10010010 00010000 00010000 000 100 0 1010 0 1011 0 110 111 
+
+Pro ukázkový text (přeformátováno, doplněno nulami):
+01011011 11001010 01011010 11011001 01110100 01110001 00100011
+01111110 10010010 00010000 00010000 00010001 01001011 01101110 
+
+Přepis na bajty (14 bajtů):
+5b       ca       5a       d9       74       71       23
+7e       92       10       10       11       4b       6e
+</pre>
+
+<p>Tedy původní text o délce 8 bajtů se zkomprimuje na novou délku 14 bajtů. 
+Nárůst je ale dán pouze uložením kódovacího stromu, pro delší vstup by již 
+bylo dosaženo úspory.</p>
+
+<p>Při dekompresi je potřeba nejprve načíst serializovaný kódovací strom. 
+Načítání je rekurzivní. Rekurzivní funkce čte jeden bit ze souboru. Pokud načte bit 0,
+vytvoří vnitřní uzel a 2x se rekurzivně zavolá pro levý a pravý podstrom. Pokud načte bit 1,
+načte ještě následující UTF-8 znak a vytvoří pro něj odpovídající listový uzel.</p>
+
+<p>Huffmanův strom lze s výhodou použít i pro dekompresi. Po načtení stromu 
+stačí z komprimovaného souboru číst jednotlivé bity a podle hodnoty 0/1 procházet 
+strom vlevo/vpravo. Po dosažení listu máme dekódovaný jeden znak a začínáme znovu 
+od kořene.</p>
+
+<p>Úkolem je realizovat dvě funkce s rozhraním níže. Obě funkce mají parametrem dvě 
+jména souborů: zdrojový a cílový. Funkce čtou zdrojový soubor a zapisují výsledek 
+komprimace/dekomprese do cílového souboru. Návratovou hodnotou obou funkcí je 
+příznak úspěchu (<tt>true</tt>) nebo chyby (<tt>false</tt>). Pokud se během požadované operace komprimace/dekomprese
+cokoliv nepodaří (otevřít soubor / vytvořit soubor / číst zdroj / zapisovat cíl / nesprávný 
+formát dat / ...), funkce bude vracet hodnotu <tt>false</tt>.</p>
+
+<p>Implementace dekomprese je snazší, referenční řešení má cca 200 zdrojových řádek. 
+Implementace funkce pro dekompresi je požadovaná, pokud nebude fungovat, neprojde program 
+závaznými testy. Funkce pro komprimaci je pracnější. Referenční řešení obou funkcí 
+má přibližně 500 zdrojových řádek. To je na domácí úlohu větší rozsah, proto je 
+tato část úlohy pouze volitelná za bodový bonus. Algoritmus konstrukce Huffmanova 
+kódu je popsán např. na <a href="http://en.wikipedia.org/wiki/Huffman_coding">Wikipedii</a>. 
+Pokud se rozhodnete řešit pouze závaznou část, ponechte funkci pro komprimaci 
+podle ukázky a v jejím těle vždy vracejte hodnotu <tt>false</tt>.</p>
+
+<p>Při implementaci máte k dispozici datové struktury z STL, viz ukázka. Struktury z STL 
+použít můžete, ale nemusíte. Pokud budete řešit pouze funkci pro dekompresi, patrně je 
+nevyužijete. STL datové struktury se hodí zejména pro implementaci komprimace.</p>
+
+<pre>#ifndef __PROGTEST__
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;map&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;set&gt;
+#include &lt;queue&gt;
+#include &lt;stdint.h&gt;
+using namespace std;
+#endif /* __PROGTEST__ */
+
+bool compressFile ( const char * inFile, const char * outFile )
+ {
+   // bonus, keep this dummy function body if not implemented
+   return false;
+ }
+
+bool decompressFile ( const char * inFile, const char * outFile ) 
+ {
+   // mandatory, todo
+ }
+
+#ifndef __PROGTEST__
+int main ( int argc, char * argv [] )
+ {
+   // tests
+   return 0;
+ }
+#endif /* __PROGTEST__ */
+</pre>
+
+<b>Poznámky:</b>
+<ul>
+ <li>Pečlivě ošetřujte souborové operace. Testovací prostředí úmyslně testuje Vaši implementaci 
+  pro soubory neexistující, nečitelné nebo soubory s nesprávným datovým obsahem.</li>
+ <li>Celý program má pracovat se soubory, kde znaky jsou kódované pomocí UTF-8. Princip tohoto kódování byl 
+  naznačen v PA1, detailní informace najdete na Wikipedii nebo v e-learningových materiálech PA1.</li>
+ <li>Testovací prostředí předkládá soubory, kde jsou UTF-8 kódy znaků poškozené (např. chybí nějaké mezilehlé 
+  bajty kódu znaku). To se týká jak komprimace (vstupní soubor), tak dekomprese (znaky uložené v serializovaném 
+  stromu). Očekávanou reakcí na takové vstupy je samozřejmě navrácení hodnoty neúspěch (<tt>false</tt>).</li>
+ <li>Při implementaci lze použít C i C++ rozhraní pro práci se soubory, volba je na Vás.</li>
+ <li>V zadání úlohy nejsou žádné ukázky běhu. V přiloženém archivu ale najdete sadu testovacích 
+  souborů (přípona .in) a jim odpovídajících ekvivalentů komprimovaných Huffmanovým kódem 
+  (přípona .huf). Soubor test5.huf není platný, pokus o dekompresi vede k chybě (proto chybí test5.in).</li>
+ <li>Huffmanův kód není určen jednoznačně. Například pokud bychom v kódech v ukázce zaměnili všechny 
+  nuly za jedničky a naopak, dostaneme též platný Huffmanův kód. Záměnou pouze v podstromech by šlo získat 
+  další řadu platných, ale navzájem různých Huffmanových kódů. Pokud tedy implementujete komprimační 
+  funkci a Váš výstup není shodný s referencí, může být implementace správná. Testovací prostředí 
+  kontroluje správnost komprimační funkce tím, že Vámi zkomprimovaný soubor zkusí dekomprimovat a výsledek porovná 
+  s očekáváním.</li>
+</ul>
+ </td>
+       </tr>
+
+
+       <tr>
+        <td class="ltbCell" colspan="2" align="left"><b>Vzorová data:</b></td>
+        <td class="rtbCell" align="center"><div class="but1 w120"><div class="but2"><a class="butLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskS&amp;Cou=103&amp;Tgr=647&amp;Tsk=1049">Download</a></div></div></td>
+       </tr>
+
+
+
+
+
+
+
+
+
+
+
+      </tbody></table>
+     </div>
+    </div>
+
+
+ <br>
+ <div class="topLayout">
+  <div class="outBox">
+   <table id="reftable" width="100%" cellspacing="0" cellpadding="2" border="0">
+   <tbody><tr>
+    <td class="ltbSepCell" align="left"><input name="SHOW_REF" onchange="showRefSolution()" type="checkbox">&nbsp;<b>Referenční řešení</b></td>
+    <td class="rtbSepCell" align="right">&nbsp;</td>
+   </tr>
+   <tr style="display: none;">
+    <td class="lrtbCell" colspan="2" align="left"><ul><li><b>Hodnotitel: automat</b><ul><li>Program zkompilován</li><li>Test 'Zakladni test se soubory dle ukazky': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.002 s (limit: 15.000 s)</li><li>Využití paměti: 12672 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Mezni hodnoty (decompress)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.002 s (limit: 14.998 s)</li><li>Využití paměti: 12672 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Nahodny test (decompress)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.620 s (limit: 14.996 s)</li><li>Využití paměti: 17024 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Nespravne vstupy (decompress)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.004 s (limit: 14.376 s)</li><li>Využití paměti: 17024 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test osetreni I/O chyb (decompress)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.947 s (limit: 14.372 s)</li><li>Využití paměti: 17024 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test komprimace (nahodny, nespravny vstup, I/O)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 3.100 s (limit: 20.000 s)</li><li>Využití paměti: 17024 KiB (limit: 36798 KiB)</li><li>Úspěch v bonusovém testu, hodnocení: 150.00 %</li></ul></li>
+<li>Celkové hodnocení: 150.00 % (= 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.50)</li></ul></li><li>Celkové procentní hodnocení: 150.00 %</li><li>Bonus za včasné odevzdání: 0.50</li><li>Celkem bodů: 1.50 * ( 5.00 + 0.50 ) = 8.25</li></ul></td>
+   </tr>
+    <tr style="display: none;">
+  <td class="ltbCell" align="left"><b>SW metriky:</b></td>
+  <td class="rtbCell" colspan="2" align="left">
+   <table cellpadding="2" border="0">
+    <tbody><tr>
+     <td>&nbsp;</td>
+     <td class="ac">Celkem</td>
+     <td class="ac">Průměr</td>
+     <td class="ac">Maximum</td>
+     <td>Jméno funkce</td>
+    </tr>
+    <tr>
+     <td>Funkce:</td>
+     <td class="ar"><b>30</b></td>
+     <td class="ar">--</td>
+     <td class="ar">--</td>
+     <td>--</td>
+    </tr>
+    <tr>
+     <td>Řádek kódu:</td>
+     <td class="ar"><b>350</b></td>
+     <td class="ar"><span class="textOk">11.67 ± 8.01</span></td>
+     <td class="ar"><span class="textOk">34</span></td>
+     <td><tt>createTree(const char *)</tt></td>
+    </tr>
+    <tr>
+     <td>Cyklomatická složitost:</td>
+     <td class="ar"><b>157</b></td>
+     <td class="ar"><span class="textOk">5.23 ± 4.66</span></td>
+     <td class="ar"><span class="textOk">19</span></td>
+     <td><tt>ReadUtf(bool)</tt></td>
+    </tr>
+   </tbody></table>
+  </td>
+ </tr>
+   </tbody></table>
+  </div>
+ </div>
+
+
+
+
+ <br>
+ <div class="topLayout">
+  <div class="outBox">
+   <table id="maintable" width="100%" cellspacing="0" cellpadding="2" border="0">
+    <colgroup><col width="200">
+    <col>
+    <col width="130">
+
+   </colgroup><tbody><tr>
+    <td class="ltbOkSepCell" align="left"><b>12</b></td>
+    <td class="tbOkSepCell" align="left"><b>11.03.2014 11:52:00</b></td>
+    <td class="rtbOkSepCell" align="center"><div class="but1 w120"><div class="but2"><a class="butLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskD&amp;Cou=103&amp;Tgr=647&amp;Tsk=1049&amp;Sub=423357">Download</a></div></div></td>
+   </tr>
+   <tr>
+    <td class="ltCell" align="left"><b>Stav odevzdání:</b></td>
+    <td class="tCell" align="left">Ohodnoceno</td>
+
+
+
+    <td class="rtbCell" rowspan="2">&nbsp;</td>
+
+
+   </tr>
+
+   <tr>
+    <td class="lbCell" align="left"><b>Hodnocení:</b></td>
+    <td class="bCell" align="left">7.4250</td>
+   </tr>   <tr>
+    <td class="lrtbCell" colspan="3" align="left"><ul><li><b>Hodnotitel: automat</b><ul><li>Program zkompilován</li><li>Test 'Zakladni test se soubory dle ukazky': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.003 s (limit: 15.000 s)</li><li>Využití paměti: 12876 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Mezni hodnoty (decompress)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.002 s (limit: 14.997 s)</li><li>Využití paměti: 12876 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Nahodny test (decompress)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.637 s (limit: 14.995 s)</li><li>Využití paměti: 17228 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Nespravne vstupy (decompress)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.005 s (limit: 14.358 s)</li><li>Využití paměti: 17228 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test osetreni I/O chyb (decompress)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.947 s (limit: 14.353 s)</li><li>Využití paměti: 17360 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test komprimace (nahodny, nespravny vstup, I/O)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 2.351 s (limit: 20.000 s)</li><li>Využití paměti: 32268 KiB (limit: 36798 KiB)</li><li>Úspěch v bonusovém testu, hodnocení: 150.00 %</li></ul></li>
+<li>Celkové hodnocení: 150.00 % (= 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.50)</li></ul></li><li>Použité nápovědy: 3</li><li>Penalizace za vyčerpané nápovědy: 10.00 % (= (3 - 2) * 10 %)</li><li>Celkové procentní hodnocení: 135.00 % (= 1.50 * 0.90)</li><li>Bonus za včasné odevzdání: 0.50</li><li>Celkem bodů: 1.35 * ( 5.00 + 0.50 ) = 7.42</li></ul></td>
+   </tr> <tr>
+  <td class="ltbCell" align="left"><b>SW metriky:</b></td>
+  <td class="rtbCell" colspan="2" align="left">
+   <table cellpadding="2" border="0">
+    <tbody><tr>
+     <td>&nbsp;</td>
+     <td class="ac">Celkem</td>
+     <td class="ac">Průměr</td>
+     <td class="ac">Maximum</td>
+     <td>Jméno funkce</td>
+    </tr>
+    <tr>
+     <td>Funkce:</td>
+     <td class="ar"><b>30</b></td>
+     <td class="ar">--</td>
+     <td class="ar">--</td>
+     <td>--</td>
+    </tr>
+    <tr>
+     <td>Řádek kódu:</td>
+     <td class="ar"><b>774</b></td>
+     <td class="ar"><span class="textOk">25.80 ± 23.64</span></td>
+     <td class="ar"><span class="textWarn">95</span></td>
+     <td><tt>LoadUTF8Char(utf8 *&amp;)</tt></td>
+    </tr>
+    <tr>
+     <td>Cyklomatická složitost:</td>
+     <td class="ar"><b>193</b></td>
+     <td class="ar"><span class="textOk">6.43 ± 9.02</span></td>
+     <td class="ar"><span class="textCrit">40</span></td>
+     <td><tt>LoadUTF8Char()</tt></td>
+    </tr>
+   </tbody></table>
+  </td>
+ </tr>   </tbody></table>
+  </div>
+ </div> <br>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  </center>
+ </form>
+
+
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+<!--
+
+var deadLine = new Date ( 1395615599 * 1000 );
+
+function CBpressed ( num )
+ {
+   var pre, cb;
+
+   cb = MM_findObj ( "cb_" + num );
+   pre = MM_findObj ( "pre_" + num );
+   if ( cb != null && pre != null )
+    {
+      pre . style . display = cb . checked ? "block" : "none";
+    }
+ }
+
+function unlockAdvice ( url )
+ {
+   if ( confirm ( 'Máte k dispozici pouze omezený počet nápověd. Navíc, použití nápovědy může snížit bodové hodnocení. Opravdu chcete zpřístupnit tuto nápovědu?' ) )
+    this . location = url;
+ }
+
+function setCountdown ( )
+ {
+   var d = new Date ();
+   var x = ( deadLine . getTime () - d . getTime () );
+   var tgt = document . getElementById ( "countdown" );
+
+   if ( x > 0 )
+    {
+      var s = Math . floor ( x / 1000 );
+      var ms = (x % 1000) + "";
+
+      while ( ms . length  < 3 ) ms = "0" + ms;
+
+      tgt . innerHTML = s + "." + ms + " sec";
+
+      window . setTimeout ( setCountdown, 117 );
+    }
+   else
+    {
+      tgt . innerHTML = '&nbsp;';
+    }
+ }
+
+function showRefSolution ( )
+ {
+   var t = document . getElementById ( "reftable" );
+   var x = document . getElementsByName ( "SHOW_REF" )[0];
+
+   if ( ! x ) return;
+   var r1 = t . rows[1], r2 = t . rows[2];
+
+   if ( x . checked )
+    {
+      r1 . style . display = "";
+      if ( r2 ) r2 . style . display = "";
+    }
+   else
+    {
+      r1 . style . display = "none";
+      if ( r2 ) r2 . style . display = "none";
+    }
+ }
+
+
+setCountdown ();
+showRefSolution ();
+
+// -->
+</script>
+
+
+
+
+
+ 
+
+
+</body></html>
+<!-- Template run time: 0.13419795036316 sec -->

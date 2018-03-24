@@ -1,0 +1,439 @@
+<!--?xml version="1.0" encoding="utf-8" ?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml-transitional.dtd">
+<html><head>
+  <title>holoumar@progtest.fit.cvut.cz - ProgTest</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="assignment_files/css.css" rel="stylesheet" type="text/css">
+  <script src="assignment_files/shared.js" language="JavaScript" type="text/javascript"></script>
+  
+ </head>
+ <body text="#000000" bgcolor="#828273">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+   <tbody><tr height="25">
+    <td bgcolor="#00ff00" align="left"><span class="navLink"><a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Main">ProgTest</a>&nbsp;&nbsp;►&nbsp;&nbsp;<a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Course&amp;Cou=103">BI-PA2 (13/14 LS)</a>&nbsp;&nbsp;►&nbsp;&nbsp;<a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskGrp&amp;Cou=103&amp;Tgr=652">Domácí úloha 06</a>&nbsp;&nbsp;►&nbsp;&nbsp;<b>DNS #1</b></span></td>
+    <td bgcolor="#00ff00" align="right"><a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Logout">Logout</a></td>
+   </tr>
+  </tbody></table>
+<br>
+
+
+
+
+ <br>
+ <br>
+   <center>
+   <div class="topLayout">
+    <div class="outBox">
+     <table class="header" width="100%" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+       <td class="header"><b>DNS #1</b></td>
+      </tr>
+     </tbody></table>
+    </div>
+   </div>
+  </center>
+ <form name="form1" method="post" action="?X=TaskU&amp;Cou=103&amp;Tgr=652&amp;Tsk=1067" enctype="multipart/form-data">
+  <center>
+    <div class="topLayout">
+     <div class="outBox">
+      <table id="maintable" width="100%" cellspacing="0" cellpadding="2" border="0">
+       <colgroup><col width="200">
+       <col>
+       <col width="130">
+
+       </colgroup><tbody><tr>
+        <td class="ltCell" align="left"><b>Termín odevzdání:</b></td>
+        <td class="tCell" align="left"><b>04.05.2014 23:59:59</b></td>
+        <td class="rtCell" id="countdown" align="right">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td class="lCell" align="left"><b>Hodnocení:</b></td>
+        <td class="rCell" colspan="2" align="left"><b>5.5000</b></td>
+       </tr>
+       <tr>
+        <td class="lCell" align="left"><b>Max. hodnocení:</b></td>
+        <td class="rCell" colspan="2" align="left"><b>5.0000</b> (bez bonusů)</td>
+       </tr>
+       <tr>
+        <td class="lCell" align="left"><b>Odevzdaná řešení:</b></td>
+        <td class="rCell" colspan="2" align="left">1 /  20 Volné pokusy + 20 Penalizované pokusy (-2 % penalizace za každé odevzdání)</td>
+       </tr>
+
+       <tr>
+        <td class="lbCell" align="left"><b>Nápovědy:</b></td>
+        <td class="rbCell" colspan="2" align="left">0 / 2 Volné nápovědy + 2 Penalizované nápovědy (-10 % penalizace za každou nápovědu)</td>
+       </tr>
+
+       <tr>
+        <td class="lrtbCell" colspan="3" align="left"><p>Úkolem je realizovat sadu tříd, které budou simulovat datové struktury použité v DNS serveru.</p>
+
+<p>DNS je síťová služba, která slouží k překladu adres z textové do binární podoby. Například adresa 
+<tt>progtest.fit.cvut.cz</tt> je v současnosti přeložena na adresu <tt>147.32.232.142</tt>. Tento překlad 
+je realizován záznamem typu <tt>A</tt> (IPv4 adresa) v zóně <tt>fit.cvut.cz</tt> pro jméno <tt>progtest</tt>.
+DNS umožňuje ukládat i další informace (AAAA pro IPv6 adresy, MX pro informaci o poštovním serveru, 
+CNAME pro aliasy, ...). Pro jedno jméno lze zaznamenat více záznamů různého typu (např. lze zadat A 
+a zároveň AAAA záznam, viz např. imap.fit.cvut.cz), dokonce lze zadat více záznamů stejného typu s různým 
+obsahem (například lze k jednomu jménu zaznamenat více záznamů typu A s různými adresami, klient náhodnou 
+volbou adresy rozkládá zátěž, používá např. google.cz). Nepřípustné je pouze duplikování identických záznamů.</p>
+
+<p>Reálné DNS je distribuované a redundantní. Naše implementace bude realizovat zjednodušení, které 
+pomocí tříd realizuje ukládané záznamy a kontejnerový objekt, který tyto záznamu umožní vkládat, mazat 
+a vyhledávat. Při implementaci se navíc omezíme pouze na záznamy A, AAAA a MX.</p>
+
+<p>Úkolem je realizovat třídy <tt>CRecA</tt>, <tt>CRecAAAA</tt> a <tt>CRecMX</tt>, které budou 
+reprezentovat záznamy v DNS. Dále je pak úkolem realizovat třídu <tt>CZone</tt>, která bude sloužit jako
+kontejner DNS záznamů. Při realizaci si můžete (a budete muset) vytvořit i další vlastní třídy. Dále budete 
+používat třídy již připravené: <tt>CIPv4</tt> a <tt>CIPv6</tt> pro reprezentaci adres a třídy 
+<tt>InvalidIPAddressFormatException</tt> a  <tt>InvalidIndexException</tt> pro reprezentaci výjimek. Připravené 
+třídy jsou realizované v testovacím prostředí a v přiloženém archivu máte jejich základní implementaci, 
+kterou budete potřebovat při ladění vašich tříd.</p>
+
+<h2>CRecA</h2>
+
+<p>Třída <tt>CRecA</tt> reprezentuje záznam typu A - překlad jména na IPv4 adresu. Rozhraní třídy 
+musí obsahovat:</p>
+
+<dl>
+ <dt>konstruktor</dt><dd>připraví novou instanci záznamu ze zadaného jména a objektu IPv4 adresy.</dd>
+ <dt><tt>Name()</tt></dt><dd>metoda vrátí jméno ze záznamu.</dd>
+ <dt><tt>Type()</tt></dt><dd>metoda vrátí typ záznamu (zde A).</dd>
+ <dt>zobrazení ve streamu</dt><dd>Záznam musí jít zobrazit do zadaného výstupního streamu (viz ukázka), 
+  zobrazení je včetně odřádkování.</dd>
+ <dt>další</dt><dd>do rozhraní můžete přidat další metody podle potřeby.</dd>
+</dl>
+
+<h2>CRecAAAA</h2>
+
+<p>Třída <tt>CRecAAAA</tt> reprezentuje záznam typu AAAA - překlad jména na IPv6 adresu. Rozhraní třídy 
+musí obsahovat:</p>
+
+<dl>
+ <dt>konstruktor</dt><dd>připraví novou instanci záznamu ze zadaného jména a objektu IPv6 adresy.</dd>
+ <dt><tt>Name()</tt></dt><dd>metoda vrátí jméno ze záznamu.</dd>
+ <dt><tt>Type()</tt></dt><dd>metoda vrátí typ záznamu (zde AAAA).</dd>
+ <dt>zobrazení ve streamu</dt><dd>Záznam musí jít zobrazit do zadaného výstupního streamu (viz ukázka),
+  zobrazení je včetně odřádkování.</dd>
+ <dt>další</dt><dd>do rozhraní můžete přidat další metody podle potřeby.</dd>
+</dl>
+
+
+<h2>CRecMX</h2>
+
+<p>Třída <tt>CRecMX</tt> reprezentuje záznam typu MX - mail server pro zadanou doménu. Rozhraní třídy 
+musí obsahovat:</p>
+
+<dl>
+ <dt>konstruktor</dt><dd>připraví novou instanci záznamu ze zadaného jména, jména mail serveru a jeho priority.</dd>
+ <dt><tt>Name()</tt></dt><dd>metoda vrátí jméno ze záznamu.</dd>
+ <dt><tt>Type()</tt></dt><dd>metoda vrátí typ záznamu (zde MX).</dd>
+ <dt>zobrazení ve streamu</dt><dd>Záznam musí jít zobrazit do zadaného výstupního streamu (viz ukázka),
+  zobnrazení je včetně odřádkování.</dd>
+ <dt>další</dt><dd>do rozhraní můžete přidat další metody podle potřeby.</dd>
+</dl>
+
+<h2>CZone</h2>
+
+<p>Třída <tt>CZone</tt> reprezentuje zónu - kolekci DNS záznamů. Rozhraní musí umožňovat:</p>
+
+<dl>
+ <dt>konstruktor</dt><dd>připraví novou prázdnou instanci pro zónu zadaného jména,</dd>
+ <dt><tt>Add()</tt></dt><dd>metoda přidá záznam (A/AAAA/MX) do zadané zóny. Nový záznam je vždy 
+   přidáván na konec seznamu. Metoda vrátí <tt>true</tt> pro úspěch, <tt>false</tt> pro neúspěch 
+   (pokud by identický záznam v zóně již existoval).</dd>
+ <dt><tt>Del()</tt></dt><dd>metoda smaže zadaný záznam. Kromě odstranění záznamu metoda nesmí měnit 
+   pořadí záznamů v zóně obsažených. Metoda vrátí <tt>true</tt> pro úspěch, <tt>false</tt> pro neúspěch 
+   (identický záznam v zóně neexistuje).</dd>
+ <dt><tt>Search()</tt></dt><dd>metoda vyhledá v zóně záznam (záznamy) zadaného jména. S hodnotou, kterou 
+  metoda <tt>Search</tt> vrátí, půjde provádět následující operace:
+   <ul>
+    <li>zobrazení ve výstupním streamu - záznamy se zobrazí v podobě dle ukázek. Pořadí záznamů bude 
+     respektovat pořadí při vkládání,</li>
+    <li>aplikováním metody <tt>Count</tt> na výsledek půjde zjistit počet nalezených záznamů,</li>
+    <li>aplikováním indexu půjde zpřístupnit jednotlivé nalezené záznamy, tedy na výsledek indexování 
+     půjde aplikovat metody <tt>Type</tt>, <tt>Name</tt> a výstupní operátor. Přetypováním hodnoty 
+     získané indexací pak půjde zpřístupnit i případné další metody z rozhraní 
+     <tt>CRecA</tt>/<tt>CRecAAAA</tt>/<tt>CRecMX</tt>. Použití je zřejmé z ukázek. Navíc, aplikace 
+     indexu mimo meze povede k vyhození výjimky <tt>InvalidIndexException</tt>.</li>
+   </ul></dd>
+ <dt>zobrazení ve streamu</dt><dd>zónu musí jít zobrazit do zadaného výstupního streamu, zobrazí 
+   se všechny obsažené záznamy (viz ukázka). Pořadí respektuje pořadí záznamů při vkládání.</dd>
+ <dt>kopírování</dt><dd>objekty zón se musí správně kopírovat/přiřazovat.</dd>
+ <dt>další</dt><dd>do rozhraní můžete přidat další metody podle potřeby.</dd>
+</dl>
+
+<p>Než začnete programovat věnujte dostatek času návrhu řešení. Zaměřte se na objektový návrh tak, 
+abyste zbytečně neduplikovali kód. Správné řešení vyžaduje polymorfismus, testovací prostředí navíc 
+zkoumá, zda jste třídy navrhli správně. Řešení bez polymorfismu nepůjde zkompilovat. Nepoužívejte 
+RTTI (<tt>typeid</tt> nebude fungovat, úmyslně chybí hlavičkový soubor <tt>typeinfo</tt>), pokud možno 
+nepoužívejte <tt>dynamic_cast</tt>. Pokud návrh podceníte, budete muset používat mnoho zbytečných 
+větvení a výsledný program bude zbytečně dlouhý, nepřehledný a neodladitelný.</p>
+
+<p>Odevzdávejte zdrojový kód s implementací požadovaných tříd (a dalších Vašich podpůrných tříd). 
+Využijte přiložený archiv. Naleznete v něm soubor <tt>solution.cpp</tt>, do kterého můžete umístit 
+Vaši implementaci, hlavičkový soubor <tt>common.h</tt> s implementací pomocných tříd a soubor 
+<tt>tests.inc</tt> s testy a očekávanými výsledky. Pokud implementaci požadovaných tříd umístíte do 
+<tt>solution.cpp</tt> a zachováte bloky podmíněného překladu, můžete tento soubor rovnou odevzdávat 
+Progtestu.</p>
+
+<p>Pro zvládnutí povinných testů postačí implementace používající naivní algoritmy. Ke zvládnutí bonusu 
+je potřeba rychlé vyhledávání v zóně, kde je mnoho záznamů.</p>
+
+<p>Ukázka běhu a požadované rozhraní není tentokrát vloženo do textu zadání. Naleznete jej 
+v přiloženém archivu.</p>
+
+</td>
+       </tr>
+
+
+       <tr>
+        <td class="ltbCell" colspan="2" align="left"><b>Vzorová data:</b></td>
+        <td class="rtbCell" align="center"><div class="but1 w120"><div class="but2"><a class="butLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskS&amp;Cou=103&amp;Tgr=652&amp;Tsk=1067">Download</a></div></div></td>
+       </tr>
+
+
+
+
+
+
+
+
+
+
+
+      </tbody></table>
+     </div>
+    </div>
+
+
+ <br>
+ <div class="topLayout">
+  <div class="outBox">
+   <table id="reftable" width="100%" cellspacing="0" cellpadding="2" border="0">
+   <tbody><tr>
+    <td class="ltbSepCell" align="left"><input name="SHOW_REF" onchange="showRefSolution()" type="checkbox">&nbsp;<b>Referenční řešení</b></td>
+    <td class="rtbSepCell" align="right">&nbsp;</td>
+   </tr>
+   <tr style="display: none;">
+    <td class="lrtbCell" colspan="2" align="left"><ul><li><b>Hodnotitel: automat</b><ul><li>Program zkompilován</li><li>Test 'Zakladni test podle ukazky': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.001 s (limit: 2.000 s)</li><li>Využití paměti: 13480 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test navrhu trid': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.000 s (limit: 1.999 s)</li><li>Využití paměti: 13480 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi hodnotami': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.418 s (limit: 1.999 s)</li><li>Využití paměti: 13788 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test kopirujiciho konstruktoru': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.043 s (limit: 1.581 s)</li><li>Využití paměti: 14916 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test operatoru=': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.056 s (limit: 1.538 s)</li><li>Využití paměti: 14960 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi daty + kontrola prace s pameti': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 1.157 s (limit: 10.000 s)</li><li>Využití paměti: 21116 KiB (limit: 50850 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 1.924 s (limit: 5.000 s)</li><li>Využití paměti: 36824 KiB (limit: 62189 KiB)</li><li>Úspěch v bonusovém testu, hodnocení: 120.00 %</li></ul></li>
+<li>Všechny paměťové bloky byly uvolněné - ok.</li><li>Celkové hodnocení: 120.00 % (= 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.20)</li></ul></li><li>Celkové procentní hodnocení: 120.00 %</li><li>Bonus za včasné odevzdání: 0.50</li><li>Celkem bodů: 1.20 * ( 5.00 + 0.50 ) = 6.60</li></ul></td>
+   </tr>
+    <tr style="display: none;">
+  <td class="ltbCell" align="left"><b>SW metriky:</b></td>
+  <td class="rtbCell" colspan="2" align="left">
+   <table cellpadding="2" border="0">
+    <tbody><tr>
+     <td>&nbsp;</td>
+     <td class="ac">Celkem</td>
+     <td class="ac">Průměr</td>
+     <td class="ac">Maximum</td>
+     <td>Jméno funkce</td>
+    </tr>
+    <tr>
+     <td>Funkce:</td>
+     <td class="ar"><b>41</b></td>
+     <td class="ar">--</td>
+     <td class="ar">--</td>
+     <td>--</td>
+    </tr>
+    <tr>
+     <td>Řádek kódu:</td>
+     <td class="ar"><b>210</b></td>
+     <td class="ar"><span class="textOk">5.12 ± 3.54</span></td>
+     <td class="ar"><span class="textOk">17</span></td>
+     <td><tt>operator =(const CZone &amp;)</tt></td>
+    </tr>
+    <tr>
+     <td>Cyklomatická složitost:</td>
+     <td class="ar"><b>57</b></td>
+     <td class="ar"><span class="textOk">1.39 ± 1.67</span></td>
+     <td class="ar"><span class="textOk">6</span></td>
+     <td><tt>Add(const CRecBase &amp;)</tt></td>
+    </tr>
+   </tbody></table>
+  </td>
+ </tr>
+   </tbody></table>
+  </div>
+ </div>
+
+
+
+
+ <br>
+ <div class="topLayout">
+  <div class="outBox">
+   <table id="maintable" width="100%" cellspacing="0" cellpadding="2" border="0">
+    <colgroup><col width="200">
+    <col>
+    <col width="130">
+
+   </colgroup><tbody><tr>
+    <td class="ltbOkSepCell" align="left"><b>1</b></td>
+    <td class="tbOkSepCell" align="left"><b>19.04.2014 16:59:42</b></td>
+    <td class="rtbOkSepCell" align="center"><div class="but1 w120"><div class="but2"><a class="butLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskD&amp;Cou=103&amp;Tgr=652&amp;Tsk=1067&amp;Sub=445287">Download</a></div></div></td>
+   </tr>
+   <tr>
+    <td class="ltCell" align="left"><b>Stav odevzdání:</b></td>
+    <td class="tCell" align="left">Ohodnoceno</td>
+
+
+
+    <td class="rtbCell" rowspan="2">&nbsp;</td>
+
+
+   </tr>
+
+   <tr>
+    <td class="lbCell" align="left"><b>Hodnocení:</b></td>
+    <td class="bCell" align="left">5.5000</td>
+   </tr>   <tr>
+    <td class="lrtbCell" colspan="3" align="left"><ul><li><b>Hodnotitel: automat</b><ul><li>Program zkompilován</li><li>Test 'Zakladni test podle ukazky': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.001 s (limit: 5.000 s)</li><li>Využití paměti: 13496 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test navrhu trid': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.000 s (limit: 4.999 s)</li><li>Využití paměti: 13496 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi hodnotami': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.976 s (limit: 4.999 s)</li><li>Využití paměti: 13812 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test kopirujiciho konstruktoru': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.277 s (limit: 4.023 s)</li><li>Využití paměti: 15132 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test operatoru=': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.323 s (limit: 3.746 s)</li><li>Využití paměti: 15132 KiB (limit: 32892 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi daty + kontrola prace s pameti': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 1.391 s (limit: 10.000 s)</li><li>Využití paměti: 21328 KiB (limit: 50850 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti': Program překročil přidělenou maximální dobu běhu<ul><li>Vyčerpání limitu na celý test, program násilně ukončen po: 5.005 s (limit: 5.000 s)</li><li>Neúspěch v bonusovém testu, hodnocení: Bonus nebude udělen</li></ul></li>
+<li>Celkové hodnocení: 100.00 % (= 1.00 * 1.00 * 1.00 * 1.00 * 1.00 * 1.00)</li></ul></li><li>Použité nápovědy: 1</li><li>Penalizace za vyčerpané nápovědy: Není (1 &lt;= 2 limit)</li><li>Celkové procentní hodnocení: 100.00 %</li><li>Bonus za včasné odevzdání: 0.50</li><li>Celkem bodů: 1.00 * ( 5.00 + 0.50 ) = 5.50</li></ul></td>
+   </tr> <tr>
+  <td class="ltbCell" align="left"><b>SW metriky:</b></td>
+  <td class="rtbCell" colspan="2" align="left">
+   <table cellpadding="2" border="0">
+    <tbody><tr>
+     <td>&nbsp;</td>
+     <td class="ac">Celkem</td>
+     <td class="ac">Průměr</td>
+     <td class="ac">Maximum</td>
+     <td>Jméno funkce</td>
+    </tr>
+    <tr>
+     <td>Funkce:</td>
+     <td class="ar"><b>29</b></td>
+     <td class="ar">--</td>
+     <td class="ar">--</td>
+     <td>--</td>
+    </tr>
+    <tr>
+     <td>Řádek kódu:</td>
+     <td class="ar"><b>166</b></td>
+     <td class="ar"><span class="textOk">5.72 ± 4.88</span></td>
+     <td class="ar"><span class="textOk">23</span></td>
+     <td><tt>Add(const CRec &amp;)</tt></td>
+    </tr>
+    <tr>
+     <td>Cyklomatická složitost:</td>
+     <td class="ar"><b>40</b></td>
+     <td class="ar"><span class="textOk">1.38 ± 2.04</span></td>
+     <td class="ar"><span class="textOk">8</span></td>
+     <td><tt>Add(const CRec &amp;)</tt></td>
+    </tr>
+   </tbody></table>
+  </td>
+ </tr>   </tbody></table>
+  </div>
+ </div> <br>
+  
+  
+  
+  
+  
+ 
+  </center>
+ </form>
+
+
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+<!--
+
+var deadLine = new Date ( 1399240799 * 1000 );
+
+function CBpressed ( num )
+ {
+   var pre, cb;
+
+   cb = MM_findObj ( "cb_" + num );
+   pre = MM_findObj ( "pre_" + num );
+   if ( cb != null && pre != null )
+    {
+      pre . style . display = cb . checked ? "block" : "none";
+    }
+ }
+
+function unlockAdvice ( url )
+ {
+   if ( confirm ( 'Máte k dispozici pouze omezený počet nápověd. Navíc, použití nápovědy může snížit bodové hodnocení. Opravdu chcete zpřístupnit tuto nápovědu?' ) )
+    this . location = url;
+ }
+
+function setCountdown ( )
+ {
+   var d = new Date ();
+   var x = ( deadLine . getTime () - d . getTime () );
+   var tgt = document . getElementById ( "countdown" );
+
+   if ( x > 0 )
+    {
+      var s = Math . floor ( x / 1000 );
+      var ms = (x % 1000) + "";
+
+      while ( ms . length  < 3 ) ms = "0" + ms;
+
+      tgt . innerHTML = s + "." + ms + " sec";
+
+      window . setTimeout ( setCountdown, 117 );
+    }
+   else
+    {
+      tgt . innerHTML = '&nbsp;';
+    }
+ }
+
+function showRefSolution ( )
+ {
+   var t = document . getElementById ( "reftable" );
+   var x = document . getElementsByName ( "SHOW_REF" )[0];
+
+   if ( ! x ) return;
+   var r1 = t . rows[1], r2 = t . rows[2];
+
+   if ( x . checked )
+    {
+      r1 . style . display = "";
+      if ( r2 ) r2 . style . display = "";
+    }
+   else
+    {
+      r1 . style . display = "none";
+      if ( r2 ) r2 . style . display = "none";
+    }
+ }
+
+
+setCountdown ();
+showRefSolution ();
+
+// -->
+</script>
+
+
+
+
+
+ 
+
+
+</body></html>
+<!-- Template run time: 0.055480003356934 sec -->

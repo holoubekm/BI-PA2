@@ -1,0 +1,493 @@
+<!--?xml version="1.0" encoding="utf-8" ?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml-transitional.dtd">
+<html><head>
+  <title>holoumar@progtest.fit.cvut.cz - ProgTest</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="assignment_files/css.css" rel="stylesheet" type="text/css">
+  <script src="assignment_files/shared.js" language="JavaScript" type="text/javascript"></script>
+  
+ </head>
+ <body text="#000000" bgcolor="#828273">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+   <tbody><tr height="25">
+    <td bgcolor="#00ff00" align="left"><span class="navLink"><a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Main">ProgTest</a>&nbsp;&nbsp;►&nbsp;&nbsp;<a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Course&amp;Cou=103">BI-PA2 (13/14 LS)</a>&nbsp;&nbsp;►&nbsp;&nbsp;<a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskGrp&amp;Cou=103&amp;Tgr=651">Domácí úloha 05</a>&nbsp;&nbsp;►&nbsp;&nbsp;<b>Poštovní schránka</b></span></td>
+    <td bgcolor="#00ff00" align="right"><a class="navLink" href="https://progtest.fit.cvut.cz/index.php?X=Logout">Logout</a></td>
+   </tr>
+  </tbody></table>
+<br>
+
+
+
+
+ <br>
+ <br>
+   <center>
+   <div class="topLayout">
+    <div class="outBox">
+     <table class="header" width="100%" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+       <td class="header"><b>Poštovní schránka</b></td>
+      </tr>
+     </tbody></table>
+    </div>
+   </div>
+  </center>
+ <form name="form1" method="post" action="?X=TaskU&amp;Cou=103&amp;Tgr=651&amp;Tsk=1064" enctype="multipart/form-data">
+  <center>
+    <div class="topLayout">
+     <div class="outBox">
+      <table id="maintable" width="100%" cellspacing="0" cellpadding="2" border="0">
+       <colgroup><col width="200">
+       <col>
+       <col width="130">
+
+       </colgroup><tbody><tr>
+        <td class="ltCell" align="left"><b>Termín odevzdání:</b></td>
+        <td class="tCell" align="left"><b>27.04.2014 23:59:59</b></td>
+        <td class="rtCell" id="countdown" align="right">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td class="lCell" align="left"><b>Hodnocení:</b></td>
+        <td class="rCell" colspan="2" align="left"><b>3.3000</b></td>
+       </tr>
+       <tr>
+        <td class="lCell" align="left"><b>Max. hodnocení:</b></td>
+        <td class="rCell" colspan="2" align="left"><b>3.0000</b> (bez bonusů)</td>
+       </tr>
+       <tr>
+        <td class="lCell" align="left"><b>Odevzdaná řešení:</b></td>
+        <td class="rCell" colspan="2" align="left">1 /  20 Volné pokusy + 20 Penalizované pokusy (-2 % penalizace za každé odevzdání)</td>
+       </tr>
+
+       <tr>
+        <td class="lbCell" align="left"><b>Nápovědy:</b></td>
+        <td class="rbCell" colspan="2" align="left">0 / 2 Volné nápovědy + 2 Penalizované nápovědy (-10 % penalizace za každou nápovědu)</td>
+       </tr>
+
+       <tr>
+        <td class="lrtbCell" colspan="3" align="left"><p>Úkolem je vytvořit třídy <tt>CMailBox</tt> a <tt>CMail</tt>, které budou 
+simulovat poštovní schránku na poštovním serveru.</p>
+
+<p>Celý program bude tvořen několika třídami. Některé třídy budete vyvíjet sami, jiné 
+jsou hotové v testovacím prostředí. Pro účely testování si je budete muset 
+v odlehčené verzi také vyvinout. Jedná se o postup nazývaný "mocking" - pro 
+odladění a otestování Vašeho kódu si připravíte implementaci cizích tříd. Takto 
+implementované třídy mají stejné rozhraní jako třídy produkční, ale jejich implementace 
+je nějak zjednodušená nebo upravená pro snazší testování.</p>
+
+
+<dl>
+ <dt><tt>CMailBox</tt></dt><dd>Tato třída reprezentuje jednu e-mailovou schránku. 
+  schránka může obsahovat došlou poštu (instance třídy <tt>CMail</tt>), pošta může 
+  být rozdělena do složek. Tuto třídu budete implementovat celou.</dd>
+
+ <dt><tt>CMail</tt></dt><dd>Tato třída reprezentuje jeden e-mail. E-mail je popsán
+  datem a časem doručení, odesilatelem, obsahem a přílohami. Pro reprezentaci těchto 
+  náležitostí budete používat třídy <tt>CTimeStamp</tt>, <tt>std::string</tt>, 
+  <tt>CMailBody</tt> a <tt>CAttach</tt>. Třídu <tt>CMail</tt> budete implementovat celou.</dd>
+
+ <dt><tt>CTimeStamp</tt></dt><dd>Je jednoduchá třída reprezentující datum a čas. Tato třída 
+  je implementovaná v testovacím prostředí, budete ji implementovat pouze pro účely testování. 
+  Vaše implementace této třídy musí zůstat v bloku podmíněného překladu (viz přiložený vzor).</dd>
+
+ <dt><tt>CMailBody</tt></dt><dd>Tato třída zabaluje tělo e-mailu. Je implementovaná v testovacím 
+  prostředí, Vy budete opět implementovat pouze odlehčenou variantu pro testování. Tato Vaše 
+  implementace opět musí zůstat v bloku podmíněného překladu.</dd>
+
+ <dt><tt>CAttach</tt></dt><dd>Tato třída reprezentuje přílohy. Je implementované v testovacím prostředí a 
+  v přiložené ukázce máte její kompletní podobu. Implementaci opět ponechte v bloku 
+  podmíněného překladu.</dd>
+</dl>
+
+<h2>CMailBox</h2>
+
+<p>Tuto třídu implementujete celou. Implementace musí být MIMO blok podmíněného překladu. Požadované
+rozhraní obsahuje:</p>
+<dl>
+ <dt>konstruktor</dt><dd>vytvoří prázdnou schránku. Ve schránce je jediná složka <tt>inbox</tt> 
+  pro příchozí poštu.</dd>
+
+ <dt>destruktor, kopírující konstruktor a operátor =</dt><dd>pokud jsou potřeba,</dd>
+
+ <dt><tt>Delivery (mail)</tt></dt><dd>Metoda přidá zadaný e-mail do složky <tt>inbox</tt>. Metoda vrací 
+  hodnotu <tt>true</tt> pro úspěch, <tt>false</tt> pro neúspěch (ale selhat by neměla).</dd>
+
+ <dt><tt>NewFolder (name)</tt></dt><dd>Metoda vytvoří novou složku zadaného jména. Nově vytvořená složka 
+  bude prázdná. Metoda vrací <tt>true</tt> pro úspěch, <tt>false</tt> pro neúspěch (složka stejného jména 
+  již existuje). Předpokládáme pouze jednoúrovňové složky (nelze vnořovat).</dd>
+
+ <dt><tt>MoveMail (fromFld, toFld)</tt></dt><dd>Metoda přesune poštu ze zadané složky <tt>fromFld</tt>
+  do cílové složky <tt>toFld</tt>. Přesunutí znamená, že složka <tt>fromFld</tt> bude po úspěšném dokončení 
+  prázdná. Metoda vrací <tt>true</tt> pro úspěch, <tt>false</tt> pro neúspěch (některá ze složek neexistuje).</dd>
+
+ <dt><tt>ListMail (fld, from, to)</tt></dt><dd>Metoda vrátí seznam e-mailů ze zadané složky <tt>fld</tt> v zadaném 
+  rozmezí času (<tt>from - to</tt>, obě meze včetně). Pokud zadaná složka neexistuje, vrátí prázdný seznam.</dd>
+
+ <dt><tt>ListAddr (from, to)</tt></dt><dd>Metoda vrátí množinu se adresami odesilatelů e-mailů, které došly v zadaném rozmezí 
+  času (<tt>from - to</tt>, obě meze včetně). Hledá se ve všech složkách. Pokud v zadaném intervalu nedošel 
+  žádný e-mail, bude výsledkem prázdná množina.</dd>
+</dl>
+
+<h2>CMail</h2>
+
+<p>Tuto třídu implementujete celou. Implementace musí být MIMO blok podmíněného překladu. Požadované
+rozhraní obsahuje:</p>
+<dl>
+ <dt>konstruktor</dt><dd>který vytvoří instanci se složkami nastavenými podle parametrů. Parametr 
+   <tt>attach</tt> může být NULL, pokud příloha neexistuje,</dd>
+
+ <dt>destruktor, kopírující konstruktor, operátor =, ...</dt><dd>pokud jsou potřeba,</dd>
+
+ <dt>přístupové metody (getter)</dt><dd>pro jednotlivé složky (čas, odesilatel, tělo mailu, přílohy),
+
+ </dd><dt>operátor pro výstup</dt><dd>který zobrazí datum, odesilatele, tělo mailu a přílohu (pokud existuje). 
+  Pro všechny složky jsou připravené operátory pro výstup, složky jsou oddělené jednou mezerou. Testovací 
+  prostředí výstupy nekontroluje, jsou zde pouze pro ladění a testování.
+</dd></dl>
+
+<h2>CTimeStamp</h2>
+
+<p>Tuto třídu implementujete pouze pro účely ladění a testování. Implementace MUSÍ být v bloku podmíněného překladu. 
+Produkční rozhraní obsahuje:</p>
+<dl>
+ <dt>konstruktor</dt><dd>který vytvoří instanci ze zadaných složek rok/měsíc/den/hodina/minuta/sekunda,</dd>
+
+ <dt>Compare (x)</dt><dd>Metoda porovná instanci a parametr <tt>x</tt>. Vrátí zápornou hodnotu pokud je 
+  instance menší než <tt>x</tt>, 0 pokud jsou si rovné a kladnou hodnotu pokud je instance větší než 
+  <tt>x</tt>. 
+
+ </dd><dt>operátor pro výstup</dt><dd>zobrazí reprezentovaný časový údaj v podobě YYYY-MM-DD HH24:MI:SS.
+
+ </dd><dt>další</dt><dd>Pro skutečný běh se bude používat implementace v testovacím prostředí. I když si do své implementace 
+  <tt>CTimeStamp</tt> přidáte nějaké další metody, tyto nebudou v testovacím prostředí dostupné. Proto doporučujeme
+  používat pouze toto rozhraní a další metody nepřidávat.</dd>
+</dl>
+
+<h2>CMailBody</h2>
+
+<p>Tuto třídu implementujete pouze pro účely ladění a testování. Implementace MUSÍ být v bloku podmíněného překladu. 
+Produkční rozhraní obsahuje:</p>
+
+<dl>
+ <dt>konstruktor</dt><dd>který vytvoří instanci ze zadané informace o délce a obsahu,</dd>
+ <dt>destruktor, kopírující konstruktor, operátor =, ...</dt><dd>instance obsahuje dynamicky alokovaná data,
+   v implementaci proto je k dispozici kopírující konstruktor/op=/..., aby šlo objekty snadno přesouvat a kopírovat,</dd>
+  
+ <dt>operátor pro výstup</dt><dd>v dodané podobě, opět určený pro testování a ladění.
+
+ </dd><dt>další</dt><dd>Pro skutečný běh se bude používat implementace v testovacím prostředí. I když si do své implementace 
+  <tt>CMailBody</tt> přidáte nějaké další metody, tyto nebudou v testovacím prostředí dostupné. Proto doporučujeme
+  používat pouze toto rozhraní a další metody nepřidávat. V testovacím prostředí je dále úprava, která zamezuje 
+  vytváření instancí <tt>CMailBody</tt> dynamicky (pomocí <tt>new</tt>).</dd>
+</dl>
+
+<h2>CAttach</h2>
+
+<p>Tato třída je implementovaná v testovacím prostředí a její zdrojový kód je v příloze (v bloku podmíněného překladu). 
+Třída reprezentuje přílohu e-mailu (velmi zjednodušenou). Protože se přílohy často opakují (ty samé soubory se rozesílají 
+více uživatelům, řetězové maily), jsou přílohy řešené pomocí počítaných referencí. Rozhraní proto je:</p>
+
+
+<dl>
+ <dt>konstruktor</dt><dd>který vytvoří instanci ze zadaném obsahu (zde velmi zjednodušeno). Konstruktor inicializuje
+   proměnnou <tt>m_RefCnt</tt>, tato proměnná drží počet odkazů na tento objekt. Objekt zanikne v okamžiku, kdy na něj 
+   nebude nikdo odkazovat (m_RefCnt==0).</dd>
+
+ <dt><tt>AddRef</tt></dt><dd>metoda zvedne počet odkazů. Každý, kdo získá odkaz na objekt, zavolá tuto metodu. 
+   Tedy například konstruktor <tt>CMail</tt> nebo getter <tt>Attach</tt> budou volat tuto metody, aby počet odkazů 
+   souhlasil.</dd>
+
+ <dt><tt>Release</tt></dt><dd>metoda sníží počet odkazů a pokud dosáhne 0, objekt zruší. Tuto metodu zavolá 
+  každý, kdo dříve získal odkaz na objekt a již jej nepotřebuje. Tedy např. destruktor <tt>CMail</tt> nebo
+  kód, který odkaz na objekt dříve získal při volání gettru <tt>Attach</tt>.</dd>
+
+ <dt>destruktor</dt><dd>uvolní případné prostředky (zde velmi zjednodušeno). Všimněte si, že destruktor je privátní,
+   efektivně tedy nelze vytvořit staticky alokovanou instanci a vytvořenou instanci nelze smazat pomocí <tt>delete</tt>. 
+   To má dobrý význam, k výmazu dojde, až instance nebude odkazovaná z jiného místa, objekt nelze snadno zničit když na 
+   něj odkazuje někdo jiný.</dd>
+
+ <dt>kopírující konstruktor, operátor =, ...</dt><dd>jsou přesunuté do privátní sekce, tedy pro okolní svět zakázané.</dd>
+
+ <dt>operátor pro výstup</dt><dd>v dodané podobě, opět určený pro testování a ladění.</dd>
+
+ <dt>mutable m_RefCnt</dt><dd>tuto složku lze modifikovat i z <tt>const</tt> metod.</dd>
+
+ <dt>další</dt><dd>Pro skutečný běh se bude používat implementace v testovacím prostředí. I když si do své implementace 
+  <tt>CAttach</tt> přidáte nějaké další metody, tyto nebudou v testovacím prostředí dostupné. Proto doporučujeme
+  používat pouze toto rozhraní a další metody nepřidávat.</dd>
+</dl>
+
+<p>Odevzdávejte soubor, který obsahuje implementaci požadovaných tříd. 
+Třídy musí splňovat veřejné rozhraní podle ukázky - pokud 
+Vámi odevzdané řešení nebude obsahovat popsané rozhraní, dojde k chybě 
+při kompilaci. Do třídy si ale můžete doplnit další metody
+(veřejné nebo i privátní) a členské proměnné. Odevzdávaný soubor musí
+obsahovat jak deklaraci třídy (popis rozhraní) tak i definice metod, konstruktoru a
+destruktoru. Je jedno, zda jsou metody implementované inline
+nebo odděleně. Odevzdávaný soubor nesmí obsahovat vkládání hlavičkových
+souborů a funkci <tt>main</tt>. Funkce <tt>main</tt>, vkládání hlavičkových
+souborů a třídy <tt>CTimeStamp</tt>, <tt>CMailBody</tt> a <tt>CAttach</tt> 
+mohou zůstat, ale pouze obalené direktivami podmíněného překladu jako v přiložené 
+ukázce.</p>
+
+<p>Při řešení úlohy využijte STL. Využijte STL tak, abyste byli schopni 
+rychle zpřístupňovat složky dle jmen, dokázali rychle nalézt e-mail podle data/času a
+co nejvíce omezte zbytečné kopírování e-mailů. Úloha má povinnou, nepovinnou a bonusovou část.
+Povinnými testy projde i naivní řešení. Nepovinným testem projde vylepšená verze, která dokáže 
+pracovat s velkým množstvím e-mailů (omezte počet potřebných porovnávání při hledání e-mailů). 
+Bonusovým testem projde řešení, které dokáže rychle kopírovat/přesouvat e-maily (provádí 
+se mnoho přesunů mezi složkami, budete muset použít přesouvací konstruktor/operátor= z C++11 
+a deklaraci <tt>noexcept</tt>).</p>
+
+
+
+</td>
+       </tr>
+
+
+       <tr>
+        <td class="ltbCell" colspan="2" align="left"><b>Vzorová data:</b></td>
+        <td class="rtbCell" align="center"><div class="but1 w120"><div class="but2"><a class="butLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskS&amp;Cou=103&amp;Tgr=651&amp;Tsk=1064">Download</a></div></div></td>
+       </tr>
+
+
+
+
+
+
+
+
+
+
+
+      </tbody></table>
+     </div>
+    </div>
+
+
+ <br>
+ <div class="topLayout">
+  <div class="outBox">
+   <table id="reftable" width="100%" cellspacing="0" cellpadding="2" border="0">
+   <tbody><tr>
+    <td class="ltbSepCell" align="left"><input name="SHOW_REF" onchange="showRefSolution()" type="checkbox">&nbsp;<b>Referenční řešení</b></td>
+    <td class="rtbSepCell" align="right">&nbsp;</td>
+   </tr>
+   <tr style="display: none;">
+    <td class="lrtbCell" colspan="2" align="left"><ul><li><b>Hodnotitel: automat</b><ul><li>Program zkompilován</li><li>Test 'Zakladni test s parametry podle ukazky': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.000 s (limit: 4.000 s)</li><li>Využití paměti: 12812 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi daty': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 0.280 s (limit: 4.000 s)</li><li>Využití paměti: 13860 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (mnoho e-mailu)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 2.309 s (limit: 10.000 s)</li><li>Využití paměti: 19464 KiB (limit: 42657 KiB)</li><li>Úspěch v nepovinném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (mnoho presunu)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 4.633 s (limit: 15.000 s)</li><li>Využití paměti: 56112 KiB (limit: 111017 KiB)</li><li>Úspěch v bonusovém testu, hodnocení: 130.00 %</li></ul></li>
+<li>Celkové hodnocení: 130.00 % (= 1.00 * 1.00 * 1.00 * 1.30)</li></ul></li><li>Celkové procentní hodnocení: 130.00 %</li><li>Bonus za včasné odevzdání: 0.30</li><li>Celkem bodů: 1.30 * ( 3.00 + 0.30 ) = 4.29</li></ul></td>
+   </tr>
+    <tr style="display: none;">
+  <td class="ltbCell" align="left"><b>SW metriky:</b></td>
+  <td class="rtbCell" colspan="2" align="left">
+   <table cellpadding="2" border="0">
+    <tbody><tr>
+     <td>&nbsp;</td>
+     <td class="ac">Celkem</td>
+     <td class="ac">Průměr</td>
+     <td class="ac">Maximum</td>
+     <td>Jméno funkce</td>
+    </tr>
+    <tr>
+     <td>Funkce:</td>
+     <td class="ar"><b>11</b></td>
+     <td class="ar">--</td>
+     <td class="ar">--</td>
+     <td>--</td>
+    </tr>
+    <tr>
+     <td>Řádek kódu:</td>
+     <td class="ar"><b>68</b></td>
+     <td class="ar"><span class="textOk">6.18 ± 2.82</span></td>
+     <td class="ar"><span class="textOk">11</span></td>
+     <td><tt>operator =(const CMail &amp;)</tt></td>
+    </tr>
+    <tr>
+     <td>Cyklomatická složitost:</td>
+     <td class="ar"><b>19</b></td>
+     <td class="ar"><span class="textOk">1.73 ± 1.35</span></td>
+     <td class="ar"><span class="textOk">5</span></td>
+     <td><tt>operator =(const CMail &amp;)</tt></td>
+    </tr>
+   </tbody></table>
+  </td>
+ </tr>
+   </tbody></table>
+  </div>
+ </div>
+
+
+
+
+ <br>
+  
+  
+  
+ <div class="topLayout">
+  <div class="outBox">
+   <table id="maintable" width="100%" cellspacing="0" cellpadding="2" border="0">
+    <colgroup><col width="200">
+    <col>
+    <col width="130">
+
+   </colgroup><tbody><tr>
+    <td class="ltbOkSepCell" align="left"><b>1</b></td>
+    <td class="tbOkSepCell" align="left"><b>13.04.2014 20:57:58</b></td>
+    <td class="rtbOkSepCell" align="center"><div class="but1 w120"><div class="but2"><a class="butLink" href="https://progtest.fit.cvut.cz/index.php?X=TaskD&amp;Cou=103&amp;Tgr=651&amp;Tsk=1064&amp;Sub=443011">Download</a></div></div></td>
+   </tr>
+   <tr>
+    <td class="ltCell" align="left"><b>Stav odevzdání:</b></td>
+    <td class="tCell" align="left">Ohodnoceno</td>
+
+
+
+    <td class="rtbCell" rowspan="2">&nbsp;</td>
+
+
+   </tr>
+
+   <tr>
+    <td class="lbCell" align="left"><b>Hodnocení:</b></td>
+    <td class="bCell" align="left">3.3000</td>
+   </tr>   <tr>
+    <td class="lrtbCell" colspan="3" align="left"><ul><li><b>Hodnotitel: automat</b><ul><li>Program zkompilován</li><li>Test 'Zakladni test s parametry podle ukazky': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 100.00 %</li><li>Celková doba běhu: 0.000 s (limit: 4.000 s)</li><li>Využití paměti: 12812 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test nahodnymi daty': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 1.575 s (limit: 4.000 s)</li><li>Využití paměti: 14000 KiB (limit: 23126 KiB)</li><li>Úspěch v závazném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (mnoho e-mailu)': Úspěch<ul><li>Dosaženo: 100.00 %, požadováno: 50.00 %</li><li>Celková doba běhu: 8.735 s (limit: 10.000 s)</li><li>Využití paměti: 19656 KiB (limit: 42657 KiB)</li><li>Úspěch v nepovinném testu, hodnocení: 100.00 %</li></ul></li>
+<li>Test 'Test rychlosti (mnoho presunu)': Program překročil přidělenou maximální dobu běhu<ul><li>Vyčerpání limitu na celý test, program násilně ukončen po: 15.006 s (limit: 15.000 s)</li><li>Neúspěch v bonusovém testu, hodnocení: Bonus nebude udělen</li></ul></li>
+<li>Celkové hodnocení: 100.00 % (= 1.00 * 1.00 * 1.00)</li></ul></li><li>Použité nápovědy: 1</li><li>Penalizace za vyčerpané nápovědy: Není (1 &lt;= 2 limit)</li><li>Celkové procentní hodnocení: 100.00 %</li><li>Bonus za včasné odevzdání: 0.30</li><li>Celkem bodů: 1.00 * ( 3.00 + 0.30 ) = 3.30</li></ul></td>
+   </tr> <tr>
+  <td class="ltbCell" align="left"><b>SW metriky:</b></td>
+  <td class="rtbCell" colspan="2" align="left">
+   <table cellpadding="2" border="0">
+    <tbody><tr>
+     <td>&nbsp;</td>
+     <td class="ac">Celkem</td>
+     <td class="ac">Průměr</td>
+     <td class="ac">Maximum</td>
+     <td>Jméno funkce</td>
+    </tr>
+    <tr>
+     <td>Funkce:</td>
+     <td class="ar"><b>10</b></td>
+     <td class="ar">--</td>
+     <td class="ar">--</td>
+     <td>--</td>
+    </tr>
+    <tr>
+     <td>Řádek kódu:</td>
+     <td class="ar"><b>46</b></td>
+     <td class="ar"><span class="textOk">4.60 ± 0.92</span></td>
+     <td class="ar"><span class="textOk">6</span></td>
+     <td><tt>Compare(const CTimeStamp &amp;)</tt></td>
+    </tr>
+    <tr>
+     <td>Cyklomatická složitost:</td>
+     <td class="ar"><b>8</b></td>
+     <td class="ar"><span class="textOk">0.80 ± 1.47</span></td>
+     <td class="ar"><span class="textOk">5</span></td>
+     <td><tt>Compare(const CTimeStamp &amp;)</tt></td>
+    </tr>
+   </tbody></table>
+  </td>
+ </tr>   </tbody></table>
+  </div>
+ </div> 
+  
+  
+ 
+  </center>
+ </form>
+
+
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+<!--
+
+var deadLine = new Date ( 1398635999 * 1000 );
+
+function CBpressed ( num )
+ {
+   var pre, cb;
+
+   cb = MM_findObj ( "cb_" + num );
+   pre = MM_findObj ( "pre_" + num );
+   if ( cb != null && pre != null )
+    {
+      pre . style . display = cb . checked ? "block" : "none";
+    }
+ }
+
+function unlockAdvice ( url )
+ {
+   if ( confirm ( 'Máte k dispozici pouze omezený počet nápověd. Navíc, použití nápovědy může snížit bodové hodnocení. Opravdu chcete zpřístupnit tuto nápovědu?' ) )
+    this . location = url;
+ }
+
+function setCountdown ( )
+ {
+   var d = new Date ();
+   var x = ( deadLine . getTime () - d . getTime () );
+   var tgt = document . getElementById ( "countdown" );
+
+   if ( x > 0 )
+    {
+      var s = Math . floor ( x / 1000 );
+      var ms = (x % 1000) + "";
+
+      while ( ms . length  < 3 ) ms = "0" + ms;
+
+      tgt . innerHTML = s + "." + ms + " sec";
+
+      window . setTimeout ( setCountdown, 117 );
+    }
+   else
+    {
+      tgt . innerHTML = '&nbsp;';
+    }
+ }
+
+function showRefSolution ( )
+ {
+   var t = document . getElementById ( "reftable" );
+   var x = document . getElementsByName ( "SHOW_REF" )[0];
+
+   if ( ! x ) return;
+   var r1 = t . rows[1], r2 = t . rows[2];
+
+   if ( x . checked )
+    {
+      r1 . style . display = "";
+      if ( r2 ) r2 . style . display = "";
+    }
+   else
+    {
+      r1 . style . display = "none";
+      if ( r2 ) r2 . style . display = "none";
+    }
+ }
+
+
+setCountdown ();
+showRefSolution ();
+
+// -->
+</script>
+
+
+
+
+
+ 
+
+
+</body></html>
+<!-- Template run time: 0.056785106658936 sec -->
