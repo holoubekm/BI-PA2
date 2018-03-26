@@ -10,5 +10,5 @@ Each folder contains the best solution I was able to download from the best back
 ### Semestral work
 I was assigned to design, implement and document the Reversi game with multiplayer support over network. Another demanded feature was naive AI implementation using minimax algorithm.
 
-### Exersises
+### Exercises
 This folder contains my own exercises done before the final test. These are implementation of assignments leaked from previous test via https://fit-wiki.cz
